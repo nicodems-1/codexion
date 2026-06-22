@@ -1,4 +1,4 @@
-typedef struct MyStructure {
+typedef struct s_param {
     int numbers_of_coders;
     int time_to_compile;
     int time_to_debug;
@@ -6,4 +6,4 @@ typedef struct MyStructure {
     int numbers_of_compiles_required;
     int dongle_cooldown;
     int scheduler;
-} Param;
+} t_param;
