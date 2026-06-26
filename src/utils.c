@@ -19,8 +19,3 @@ int is_number(char *str)
     }
     return(1);
 }
-
-// int main(int ac, char **av)
-// {
-//     printf("%d\n", is_number(av[1]));
-// }

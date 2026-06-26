@@ -6,6 +6,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <pthread.h>
 typedef struct s_param {
     int numbers_of_coders;
     int time_to_burnout;
@@ -16,6 +17,15 @@ typedef struct s_param {
     int dongle_cooldown;
     int scheduler;
 } t_param;
+
+typedef struct s_coder {
+    
+} t_coder;
+
+typedef struct s_dongle
+{
+
+}   t_dongle;
 
 int is_number(char *str);
 int is_digit(char c);
