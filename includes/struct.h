@@ -7,6 +7,8 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <pthread.h>
+
+
 typedef struct s_param {
     int numbers_of_coders;
     int time_to_burnout;
@@ -18,16 +20,24 @@ typedef struct s_param {
     int scheduler;
 } t_param;
 
-typedef struct s_coder {
-    
-} t_coder;
-
 typedef struct s_dongle
 {
+    pthread_mutex_t left_dongle;
+    pthread_mutex_t  right_dongle;
 
 }   t_dongle;
 
+typedef struct s_coder {
+    int last_compiled;
+    int times_compiled;
+    pthread_t thread_id;
+    struct s_dongle;
+} t_coder;
+
+
 int is_number(char *str);
 int is_digit(char c);
+int parsing(int ac, char **av);
+void create_coders(t_param p);
 
 #endif

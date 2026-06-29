@@ -78,8 +78,3 @@ int parsing(int ac, char **av)
     printf("%d\n", p.numbers_of_coders);
     printf("%d\n", p.scheduler);
 }
-
-int main(int ac, char **av)
-{
-    parsing(ac, av);
-}
