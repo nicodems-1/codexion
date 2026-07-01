@@ -72,13 +72,5 @@ int parsing(int ac, char **av, t_param *p)
         return(ERROR);
     }
     update_struct(ac, av, p);
-    printf("NUMBER OF CODER = %d\n", p->numbers_of_coders);
-    printf("Time to burnout = %d\n", p->time_to_burnout);
-    printf("Time to compile = %d\n", p->time_to_compile);
-    printf("Time_to_debug = %d\n", p->time_to_debug);
-    printf("number_of_compiles_required = %d\n", p->numbers_of_compiles_required);
-    printf("dongle_cooldown = %d\n", p->dongle_cooldown);
-    printf("Time_to_refactor = %d\n", p->time_to_refactor);
-    printf("scheduler = %d\n", p->scheduler);
     return SUCCESS;
 }

@@ -25,7 +25,8 @@ void create_coders(const t_param *p)
     thread_count = p->numbers_of_coders;
     //allocating enough room to store coders struct in an array, each struct contains threads init
     coder_array = malloc(sizeof(t_coder)*thread_count);
-    printf("\n\n\n\n\n");
+    printf("\n");
+    printf("********************************\n");
     printf("NUMBER OF CODER = %d\n", p->numbers_of_coders);
     printf("Time to burnout = %d\n", p->time_to_burnout);
     printf("Time to compile = %d\n", p->time_to_compile);
@@ -34,14 +35,13 @@ void create_coders(const t_param *p)
     printf("dongle_cooldown = %d\n", p->dongle_cooldown);
     printf("Time_to_refactor=%d\n", p->time_to_refactor);
     printf("scheduler = %d\n", p->scheduler);
-    printf("\n\n\n\n\n\n");
+    printf("********************************\n\n");
     while(i < thread_count)
     {
+        pthread_cond_init()
         pthread_create(&c.thread_id, NULL, &routine, NULL);
         pthread_join(c.thread_id, NULL);
-        printf("%d", i);
         i++;
-        printf("test\n");
     }
 }
 
