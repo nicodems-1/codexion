@@ -32,7 +32,7 @@ int update_struct(int ac, char **av, t_param *p)
         if(parsed[i] < 0)
         {
         printf("%s", "Wrong Input, negatives integers ");
-        pritf("%s\n", "or integers bigger than INT MAX are not allowed");
+        printf("%s\n", "or integers bigger than INT MAX are not allowed");
         return ERROR;
         }
         i++;
@@ -59,11 +59,8 @@ int check_number(int ac, char **av)
     return(1);
 }
 
-int parsing(int ac, char **av)
+int parsing(int ac, char **av, t_param *p)
 {
-    t_param p;
-    t_param *ptr;
-    ptr = &p;
     if (ac != 9)
     {
         printf("ERROR");
@@ -74,7 +71,14 @@ int parsing(int ac, char **av)
         printf("%s", "provide digit between 0 to 9, others inputs are forbidden");
         return(ERROR);
     }
-    update_struct(ac, av, ptr);
-    printf("%d\n", p.numbers_of_coders);
-    printf("%d\n", p.scheduler);
+    update_struct(ac, av, p);
+    printf("NUMBER OF CODER = %d\n", p->numbers_of_coders);
+    printf("Time to burnout = %d\n", p->time_to_burnout);
+    printf("Time to compile = %d\n", p->time_to_compile);
+    printf("Time_to_debug = %d\n", p->time_to_debug);
+    printf("number_of_compiles_required = %d\n", p->numbers_of_compiles_required);
+    printf("dongle_cooldown = %d\n", p->dongle_cooldown);
+    printf("Time_to_refactor = %d\n", p->time_to_refactor);
+    printf("scheduler = %d\n", p->scheduler);
+    return SUCCESS;
 }

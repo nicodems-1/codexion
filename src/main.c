@@ -2,6 +2,8 @@
 
 int main(int ac, char **av)
 {
-    parsing(ac, av);
-    create_coders();
+    t_param p;
+    t_param value;
+    parsing(ac, av, &p);
+    create_coders(&p);
 }
