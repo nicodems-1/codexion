@@ -37,10 +37,11 @@ typedef struct s_coder
     t_param *rules; //should contain the param_struct pointer for each and every coder
 } t_coder;
 
-
+int lauch_simulation(void);
 int is_number(char *str);
 int is_digit(char c);
 int parsing(int ac, char **av, t_param *p);
 void create_coders(const t_param *p);
+void    print(const t_param *p);
 
 #endif

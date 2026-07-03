@@ -45,6 +45,7 @@ int update_struct(int ac, char **av, t_param *p)
     p->numbers_of_compiles_required = parsed[5];
     p->dongle_cooldown = parsed[6];
     p->scheduler = parsed[7];
+    return SUCCESS;
 }
 
 int check_number(int ac, char **av)

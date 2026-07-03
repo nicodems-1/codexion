@@ -1,47 +1,55 @@
 #include "../includes/struct.h"
 
-pthread_mutex_t locking_coder; //need to update the struct later so it will not be a global variable
+//need to update the struct later so it will not be a global variable
+pthread_mutex_t starting_race;
+pthread_mutex_t finish_init_mutex;
+pthread_cond_t finish_init;
+int end_init = 0;
 
 void* routine()
 {
-    // pthread_mutex_lock(&locking_coder);
+    pthread_mutex_lock(&starting_race);
+    while (end_init == 0)
+    {
+        pthread_cond_wait(&finish_init, &starting_race);
+    }
     printf("COOKING PIZZA\n");
-    usleep(3);
+    usleep(500000);
     printf("PIZZA COOKED\n");
-    // pthread_mutex_unlock(&locking_coder);
+    pthread_mutex_unlock(&starting_race);
     return NULL;
 }
 
 void create_coders(const t_param *p)
 {
-    pthread_mutex_init(&locking_coder, NULL);
+    pthread_mutex_init(&starting_race, NULL);
+    pthread_cond_init(&finish_init, NULL);
     t_coder c;
     int i;
     int thread_count;
     int *thread_array;
     int *coder_array;
 
+    // print(p);
     i = 0;
-    thread_count = p->numbers_of_coders;
-    //allocating enough room to store coders struct in an array, each struct contains threads init
+    thread_count = p->numbers_of_coders; //allocating enough room to store coders struct in an array, each struct contains threads init
     coder_array = malloc(sizeof(t_coder)*thread_count);
-    printf("\n");
-    printf("********************************\n");
-    printf("NUMBER OF CODER = %d\n", p->numbers_of_coders);
-    printf("Time to burnout = %d\n", p->time_to_burnout);
-    printf("Time to compile = %d\n", p->time_to_compile);
-    printf("Time_to_debug= %d\n", p->time_to_debug);
-    printf("number_of_compiles_required = %d\n", p->numbers_of_compiles_required);
-    printf("dongle_cooldown = %d\n", p->dongle_cooldown);
-    printf("Time_to_refactor=%d\n", p->time_to_refactor);
-    printf("scheduler = %d\n", p->scheduler);
-    printf("********************************\n\n");
+    pthread_cond_init(&finish_init, NULL);
     while(i < thread_count)
     {
-        pthread_cond_init()
-        pthread_create(&c.thread_id, NULL, &routine, NULL);
-        pthread_join(c.thread_id, NULL);
+        pthread_create(&coder_array[i], NULL, &routine, NULL);
+        printf("YES CAMRAD\n");
         i++;
     }
+    end_init = 1;
+    i = 0;
+    pthread_cond_broadcast(&finish_init);
+    while( i <= thread_count)
+    {
+                pthread_join(coder_array[i], NULL);
+                i++;
+    }
+    pthread_mutex_unlock(&starting_race);
+    exit(0);
 }
 
