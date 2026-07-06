@@ -12,8 +12,13 @@ void* compiling()
     //6  Refactoring (just usleep for time required)
 }
 
-void    get_dongles()
-{}
+void    *get_dongles(t_coder)
+{
+    //get left dongle
+    //mutex_dongle_lock
+    //get right dongle
+    //mutex_dongle_lock
+}
 
 void    compile()
 {
@@ -26,4 +31,4 @@ void    compilation(t_coder coders, t_dongle dongle)
     //compile(with time of compilation) * nb of compilations
 }
 
-int lauch_simulation()
+int lauch_simulation();

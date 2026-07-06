@@ -20,6 +20,10 @@ int is_number(char *str)
     return(1);
 }
 
+int convert_ms_to_micros(int microsecond)
+{
+    return (microsecond * 1000);
+}
 
 void    print(const t_param *p)
 {
