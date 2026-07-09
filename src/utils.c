@@ -20,12 +20,24 @@ int is_number(char *str)
     return(1);
 }
 
-int convert_ms_to_micros(int microsecond)
+long long convert_ms_to_micros(long long microsecond)
 {
     return (microsecond * 1000);
 }
 
-void    print(const t_param *p)
+long long convert_micros_to_ms(long long milisecond)
+{
+    return (milisecond / 1000);
+}
+
+unsigned long actual_time_ms(void)
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return(((tv.tv_sec)*1000) + (tv.tv_usec/1000));
+}
+
+void    print_parsed(const t_param *p)
 {
         printf("\n");
     printf("********************************\n");

@@ -1,16 +1,18 @@
 #include "../includes/struct.h"
 
-void debug(t_param p)
+int debug(t_coder *coder)
 {
-    int time_to_debug;
-    time_to_debug = convert_ms_to_micros(p.time_to_debug);
-    usleep(time_to_debug);
+    print_log(coder->data, coder->id, "is debugging");
+    if (ft_usleep(coder->data, coder->rules->time_to_debug) != CONTINUING)
+        return 0;
+    return 1;
 }
 
 
-void refactor(t_param p)
+void refactor(t_coder *coder)
 {
-    int time_to_refactor;
-    time_to_refactor = convert_ms_to_micros(p.time_to_refactor);
-    usleep(time_to_refactor);
+    print_log(coder->data, coder->id, "is refactoring");
+    if (ft_usleep(coder->data, coder->rules->time_to_refactor) != CONTINUING)
+        return 0;
+    return 1;
 }
